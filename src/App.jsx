@@ -5,6 +5,7 @@ import Footer from "./footer/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as ReactBootStrap from "react-bootstrap";
 import Swal from "sweetalert2";
+import SavedPokemon from "./SavedPokemons/SavedPokemons";
 
 function App() {
   const [pokemonName, setPokemonName] = useState("");
@@ -46,6 +47,8 @@ function App() {
         setLoading(false);
       })
       .catch((error) => {
+        setLoading(false);
+        setPokemonChosen(false);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -55,6 +58,11 @@ function App() {
         console.log(error);
         
       });
+  };
+  const pokemonSaved= [];
+  const savePokemon = () => {
+    pokemonSaved.push(pokemon);
+    console.log(pokemonSaved);
   };
 
   return (
@@ -79,7 +87,7 @@ function App() {
       </div>
       <div className="pokemon-section">
         {!pokemonChosen ? (
-          <h1>Please chose a pokemon</h1>
+          <h1>Please, chose a pokemon</h1>
         ) : (
           <>
             {loading ? (
@@ -97,13 +105,17 @@ function App() {
                   <h2>Attack: {pokemon.attack}</h2>
                   <h2>Defense: {pokemon.defense}</h2>
                   <h2>Speed: {pokemon.speed}</h2>
+                  <div className="save-button">
+            <button className="save-button__button" onClick={savePokemon}>Save</button>
+        </div>
                 </div>
               </div>
             )}
           </>
         )}
       </div>
-      <Footer />
+      <SavedPokemon/>
+      <Footer/>
     </div>
   );
 }

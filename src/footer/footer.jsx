@@ -4,10 +4,8 @@ import Swal from "sweetalert2";
 const Footer = () => {
   const handleClick = () => {
     Swal.fire({
-      title: "<strong>Constributions</strong>",
-      icon: "info",
+      title: "<h1>Contributions</h1>",   
       html: '<a href="https://www.flaticon.com/free-icons/pokemon" title="pokemon icons">Pokemon icons created by Nikita Golubev - Flaticon</a>',
-      showCloseButton: true,
       showCancelButton: false,
       focusConfirm: false,
       confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
